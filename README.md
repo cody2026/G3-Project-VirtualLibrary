@@ -6,5 +6,5 @@ Team members (Contributors): Theresa Lewis, Kyle Pickett, Indy Nguyen, Cody Nguy
 Book.java — Theresa Lewis
 UserAccount.java — Kyle Pickett
 Library.java — Indy Nguyen
-LibraryGUI.java — Cody Nguyen
-TestLibrary.java - Team
+LibraryGUI.java — Cody Nguyen/ Team
+TestLibrary.java - Cody Nguyen
