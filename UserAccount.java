@@ -8,48 +8,21 @@ package team;
 import java.util.ArrayList;
 
 public class UserAccount {
-
+    
     // UserAccount attributes
-    private String userId;
+    private int userId;
     private String name;
     private ArrayList<Book> borrowedBooks;
-
+    private final int MAX_BOOKS = 5;
+    
     // Parameterized constructor
-    public UserAccount(String userId, String name) {
+    public UserAccount(int userId, String name) {
         this.userId = userId;
         this.name = name;
-        this.borrowedBooks = new ArrayList<>();
-    }
-     // Default constructor
-    public UserAccount() {
-        this.userId = "";
-        this.name = "";
-        this.borrowedBooks = new ArrayList<>();
+        borrowedBooks = new ArrayList<>();
     }
 
-    // Method stub for adding a book to borrowedBooks
-    public void borrowBook(Book book) {
-        
-    }
-    
-    // Method stub for removing a book from borrowedBooks
-    public void returnBook(Book book) {
-        
-    }
-    
-    // Method stub to verify user is eligible to borrow based on a 5 book limit
-    public boolean canBorrowMore() {
-        
-        return true;
-    }
-    
-    // Method stub to print the list of borrowed books
-    public void displayBorrowedBooks() {
-        
-    }
-
-    // Getter methods to return values of userId, name, and borrowedBooks
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
@@ -59,5 +32,46 @@ public class UserAccount {
 
     public ArrayList<Book> getBorrowedBooks() {
         return borrowedBooks;
+    }
+
+    public boolean canBorrowMore() {
+        return borrowedBooks.size() < MAX_BOOKS;
+    }
+
+    public boolean borrowBook(Book book) {
+        if (book == null || !canBorrowMore()) {
+            return false;
+        }
+
+        borrowedBooks.add(book);
+        return true;
+    }
+
+    public boolean returnBook(Book book) {
+        return borrowedBooks.remove(book);
+    }
+
+    public int getBorrowedBookCount() {
+        return borrowedBooks.size();
+    }
+
+    public String displayBorrowedBooks() {
+        if (borrowedBooks.isEmpty()) {
+            return name + " has not borrowed any books.";
+        }
+
+        StringBuilder result = new StringBuilder();
+        result.append("Books borrowed by ").append(name).append(":\n");
+
+        for (Book book : borrowedBooks) {
+            result.append(book).append("\n");
+        }
+
+        return result.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "User ID: " + userId + ", Name: " + name + ", Borrowed Books: " + borrowedBooks.size();
     }
 }
