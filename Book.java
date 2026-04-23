@@ -38,7 +38,7 @@ public class Book {
     }
 
     // Library Methods
-    public void checkout() {
+    public void checkOut() {
         if (!checkedOut) {
             checkedOut = true;
             System.out.println("The book '" + title + "' has been checked out.");
